@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LastProject.Core\LastProject.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="All\AA\Dto\" />
+  </ItemGroup>
 </Project>
