@@ -1,0 +1,68 @@
+﻿@using LastProject.Web.Models.Common.Modals
+@model LastProject.Web.Models.GetMoney.EditGetMoneyModalViewModel
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditCourse")))
+
+<div class="modal-body">
+    <form name="CourseEditForm" role="form" novalidate class="form-validation">
+        <input type="hidden" name="Id" value="@Model.GetMoney.Id" />
+        <div>
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-line">
+                        <label class="form-label">@L("Code")</label>
+                        <input type="text" name="Code" value="@Model.GetMoney.Code" class="form-control" required maxlength="50" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-line">
+                        <label class="form-label">@L("GetMoneyTypeId")</label>
+                        <input type="text" name="GetMoneyTypeId" value="@Model.GetMoney.GetMoneyTypeId" class="form-control" required maxlength="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-line">
+                        <label class="form-label">@L("RegInfoId")</label>
+                        <input type="text" name="RegInfoId" value="@Model.GetMoney.RegInfoId" class="form-control" required maxlength="150" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-line">
+                        <label class="form-label">@L("OfficeInfoId")</label>
+                        <input type="text" name="OfficeInfoId" value="@Model.GetMoney.OfficeInfoId" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <div class="form-line">
+                        <label class="form-label">@L("CreateTime")</label>
+                        <input name="CreateTime" type="text" value="@Model.GetMoney.CreateTime" class="form-control" required maxlength="200" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <div class="form-line">
+                        <label class="form-label">@L("GetQian")</label>
+                        <input name="GetQian" type="text" value="@Model.GetMoney.GetQian" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <div class="form-line">
+                        <label class="form-label">@L("GetTypeId")</label>
+                        <input name="GetTypeId" type="text" value="@Model.GetMoney.GetTypeId" class="form-control" />
+                    </div>
+                </div>
+            </div>
+</form>
+</div>
+@Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+
+<script src="~/view-resources/Views/GetMoney/_EditGetMoneyModal.js" asp-append-version="true"></script>

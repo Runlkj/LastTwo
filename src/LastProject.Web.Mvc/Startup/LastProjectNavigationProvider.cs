@@ -13,126 +13,59 @@ namespace LastProject.Web.Startup
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu
-                .AddItem(
+                .AddItem( //一级菜单 - 首页
                     new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
-                        icon: "fas fa-home",
-                        requiresAuthentication: true
+                        icon: "home",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Home)
                     )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Tenants,
-                        L("Tenants"),
-                        url: "Tenants",
-                        icon: "fas fa-building",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Users,
-                        L("Users"),
-                        url: "Users",
-                        icon: "fas fa-users",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Roles,
-                        L("Roles"),
-                        url: "Roles",
-                        icon: "fas fa-theater-masks",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
-                            )
                 )
-                .AddItem(
+                    .AddItem( //一级菜单 - 收费
+                        new MenuItemDefinition(
+                            PageNames.GetMoney,
+                            L("GetMoney"),
+                            url: "GetMoney",
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_GetMoney)
+                        )
+                    )
+                .AddItem( //一级菜单 - 系统设置
+                    new MenuItemDefinition(
+                        "Setting",
+                        L("Setting"),
+                        icon: "settings"
+                    )
+                )
+                .AddItem( //二级菜单 - 租户管理
+                        new MenuItemDefinition(
+                            PageNames.Tenants,
+                            L("Tenants"),
+                            url: "Tenants",
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
+                        )
+                    ).AddItem( //二级菜单 - 用户管理
+                        new MenuItemDefinition(
+                            PageNames.Users,
+                            L("Users"),
+                            url: "Users",
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
+                        )
+                    ).AddItem( //一级菜单 - 角色管理
+                        new MenuItemDefinition(
+                            PageNames.Roles,
+                            L("Roles"),
+                            url: "Roles",
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
+                        )
+                    )
+                .AddItem( //一级菜单 - 关于
                     new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
                         url: "About",
-                        icon: "fas fa-info-circle"
-                    )
-                ).AddItem( // Menu items below is just for demonstration!
-                    new MenuItemDefinition(
-                        "MultiLevelMenu",
-                        L("MultiLevelMenu"),
-                        icon: "fas fa-circle"
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetBoilerplate",
-                            new FixedLocalizableString("ASP.NET Boilerplate"),
-                            icon: "far fa-circle"
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetboilerplate.com?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateTemplates",
-                                new FixedLocalizableString("Templates"),
-                                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateSamples",
-                                new FixedLocalizableString("Samples"),
-                                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        )
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetZero",
-                            new FixedLocalizableString("ASP.NET Zero"),
-                            icon: "far fa-circle"
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetzero.com?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFeatures",
-                                new FixedLocalizableString("Features"),
-                                url: "https://aspnetzero.com/Features?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroPricing",
-                                new FixedLocalizableString("Pricing"),
-                                url: "https://aspnetzero.com/Pricing?ref=abptmpl#pricing",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFaq",
-                                new FixedLocalizableString("Faq"),
-                                url: "https://aspnetzero.com/Faq?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetzero.com/Documents?ref=abptmpl",
-                                icon: "far fa-dot-circle"
-                            )
-                        )
+                        icon: "info",
+                        requiresAuthentication: true
                     )
                 );
         }
